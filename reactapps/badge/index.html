@@ -1,0 +1,25 @@
+<head>
+  <script src="https://fb.me/react-0.14.3.js"></script>
+  <script src="https://fb.me/react-dom-0.14.3.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+</head>
+<body>
+
+</body>
+<script type="text/jsx">
+
+//define a react component class
+var Helloworld = React.createClass({
+  render : function() {
+      return <div> Helloworld </div>
+  }
+});
+
+//ask react to render this class
+var element = React.createElement(Helloworld);
+
+//how to render to development
+
+ReactDOM.render(element, document.body);
+
+</script>
