@@ -1,0 +1,84 @@
+<head>
+  <script src="https://fb.me/react-0.14.3.js"></script>
+  <script src="https://fb.me/react-dom-0.14.3.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body>
+  <div class = "container">
+    <div class = "row">
+      <div class = "col-sm-5 target">
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/jsx">
+
+var option1 = {};
+option1.title = "React"
+option1.number = 12;
+option1.imageUrl = "http://www.jsweet.org/wp-content/uploads/2016/04/react-logo-300x289.png";
+option1.header = "React Course";
+option1.description = "React is a good course";
+
+var option2 = {};
+option2.title = "Gulping"
+option2.number = 12;
+option2.imageUrl = "http://www.jsweet.org/wp-content/uploads/2016/04/react-logo-300x289.png";
+option2.header = "Gulp Course";
+option2.description = "Gulp is a builder";
+
+var optionArray = [];
+optionArray.push(option1);
+optionArray.push(option2);
+var thumbnailOption = {};
+thumbnailOption.data = optionArray;
+
+//define a react component class
+var Badge = React.createClass({
+  render : function() {
+    //this.props//
+      return <button type="button" className="btn btn-primary">
+        {this.props.title} <span className="badge badge-light">{this.props.number}</span>
+        </button>
+      }
+    });
+    //creating the
+    var Thumbnail = React.createClass({
+        render : function() {
+          return <div className="thumbnail">
+              <img src={this.props.imageUrl} />
+              <div className="caption">
+                <h3>{this.props.header}</h3>
+                <p>{this.props.description}</p>
+                <p>
+                  <Badge title="See Tuto" number="32"/>
+                </p>
+              </div>
+            </div>
+        }
+    });
+
+var thumbNailList = React.createClass({
+    render : function() {
+      var list = this.props.data.map(function(thumbnailProps){
+          return <Thumbnail {...thumbnailProps}/>
+      });
+      return <div>
+      {list}</div>
+    }
+});
+
+//ask react to render this class
+  var element = React.createElement(thumbNailList, thumbnailOption);
+  ReactDOM.render(element, document.querySelector('.target'));
+//how to render to development
+//ReactDOM.render(element, document.body);
+// var Form = React.createClass({
+//   render : {
+//     <Badge title={this.props.title} number = {this.props.number}/>
+//   }
+// });
+// React.createElement(Form, options);
+
+</script>
